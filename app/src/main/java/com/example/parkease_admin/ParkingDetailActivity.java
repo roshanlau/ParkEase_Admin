@@ -13,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.parkease_admin.object.Parking;
 import com.example.parkease_admin.object.User;
-import com.example.parkease_admin.object.parking;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +30,7 @@ public class ParkingDetailActivity extends AppCompatActivity {
     DatabaseReference databaseParkings = FirebaseDatabase.getInstance("https://parkease-1a60f-default-rtdb.firebaseio.com/").getReference("parking");
     DatabaseReference databaseUsers = FirebaseDatabase.getInstance("https://parkease-1a60f-default-rtdb.firebaseio.com/").getReference("users");;
     String parkingID;
-    TextView tvLocation, tvPrice, tvUser, tvParkingID;
+    TextView tvLocation, tvPrice, tvUser, tvParkingID, tvStartTime, tvEndTime;
     ToggleButton tbStatus;
 
     @Override
@@ -46,6 +46,8 @@ public class ParkingDetailActivity extends AppCompatActivity {
         tvParkingID = findViewById(R.id.tv_parkingDetail_id);
         tvUser = findViewById(R.id.tv_parkingDetail_user);
         tvPrice = findViewById(R.id.tv_parkingDetail_price);
+        tvEndTime = findViewById(R.id.tv_parkingDetail_endTime);
+        tvStartTime = findViewById(R.id.tv_parkingDetail_startTime);
         tbStatus = findViewById(R.id.tb_parkingDetail_status);
 
 
@@ -54,7 +56,7 @@ public class ParkingDetailActivity extends AppCompatActivity {
         databaseParkings.child(parkingID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                parking currentParking = task.getResult().getValue(parking.class);
+                Parking currentParking = task.getResult().getValue(Parking.class);
 
                 tvParkingID.setText(currentParking.getParkingSpaceID());
                 tvPrice.setText(String.format("%.2f", currentParking.getPrice()));
@@ -75,10 +77,15 @@ public class ParkingDetailActivity extends AppCompatActivity {
                     tbStatus.setChecked(false);
                     tbStatus.setBackgroundColor(Color.RED);
                     tbStatus.setText("Unavailable");
+                    //add start and end time
+                    tvStartTime.setText(currentParking.getStartTime());
+                    tvEndTime.setText(currentParking.getEndTime());
                 }else{
                     tbStatus.setChecked(true);
                     tbStatus.setBackgroundColor(Color.GREEN);
                     tbStatus.setText("Available");
+                    tvStartTime.setText("-");
+                    tvEndTime.setText("-");
                 }
 
                 tvLocation.setText(getAddress(currentParking.getLatitude(), currentParking.getLongitude()));
@@ -98,10 +105,7 @@ public class ParkingDetailActivity extends AppCompatActivity {
 
             Log.v("IGA", "Address" + add);
             return add;
-            // Toast.makeText(this, "Address=>" + add,
-            // Toast.LENGTH_SHORT).show();
 
-            // TennisAppActivity.showDialog(add);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

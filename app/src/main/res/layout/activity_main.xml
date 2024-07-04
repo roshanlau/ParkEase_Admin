@@ -14,14 +14,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintVertical_bias="0.19999999"
         app:srcCompat="@mipmap/ic_logo_foreground" />
 
     <Button
         android:id="@+id/btn_main_addParking"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="Add Parking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,33 +29,33 @@
 
     <Button
         android:id="@+id/btn_main_scanQr"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Scan QR "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_addParking" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_main_parkingHistory"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Button"
+        android:layout_marginTop="8dp"
+        android:text="Parking History"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_main_scanQr" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_generateQr" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_main_transHistory"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Button"
+        android:layout_marginTop="8dp"
+        android:text="Transaction History"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_parkingHistory" />
 
     <TextView
         android:id="@+id/textView5"
@@ -68,4 +68,25 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_main_generateReport"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Generate Report"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_transHistory" />
+
+    <Button
+        android:id="@+id/btn_main_generateQr"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Generate QR Code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_scanQr" />
 </androidx.constraintlayout.widget.ConstraintLayout>

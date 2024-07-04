@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.parkease_admin.object.parking;
+import com.example.parkease_admin.object.Parking;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,19 +45,22 @@ public class AddParkingActivity extends AppCompatActivity {
                 latitude = Double.parseDouble(tvLatitude.getText().toString());
                 longitude = Double.parseDouble(tvLongitude.getText().toString());
                 price = Double.parseDouble(tvPrice.getText().toString());
+
                 if(ParkingID.isEmpty() || latitude == 0.00 || longitude == 0.00 || price == 0){
                     AlertDialog.Builder builder = new AlertDialog.Builder(AddParkingActivity.this);
                     builder.setMessage("Please enter all field").setTitle("Warning").setPositiveButton("OK", null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }else{
-                    parking newParking = new parking(
+                    Parking newParking = new Parking(
                         ParkingID,
                         "none",
                         false,
                         longitude,
                         latitude,
-                        price
+                        price,
+                        "none",
+                        "none"
                     );
 
                     databaseUsers.child(ParkingID).setValue(newParking);

@@ -41,4 +41,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.google.zxing:core:3.4.1")
     implementation("com.journeyapps:zxing-android-embedded:4.2.0")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }

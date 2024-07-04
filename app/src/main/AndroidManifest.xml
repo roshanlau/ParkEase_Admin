@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +22,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkEase_Admin"
         tools:targetApi="31">
+        <activity
+            android:name=".GenerateReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TransactionHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ParkingHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GenerateQrCodeActivity"
+            android:exported="false" />
         <activity
             android:name=".ParkingDetailActivity"
             android:exported="false" />
@@ -38,6 +52,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
     </application>
 
 </manifest>
